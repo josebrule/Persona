@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Persona } from '../models/personas';
 import { Observable } from 'rxjs';
 
-@Injectable({
+@Injectable({  
   providedIn: 'root'
 })
 export class PersonService {
@@ -16,7 +16,7 @@ export class PersonService {
     return this.http.get(`${this.API_URI}/persona`);
   }
 
-  getPersona(id: string) {
+  getPersona(id: number) {
     return this.http.get(`${this.API_URI}/persona/${id}`);
   }
 
@@ -24,12 +24,12 @@ export class PersonService {
     return this.http.delete(`${this.API_URI}/persona/${id}`);
   }
 
-  saveGame(game: Persona) {
-    return this.http.post(`${this.API_URI}/persona`, game);
+  savePersona(persona: Persona) {
+    return this.http.post(`${this.API_URI}/persona`, persona);
   }
 
-  updateGame(id: string|number, updatedGame: Persona): Observable<Persona> {
-    return this.http.put(`${this.API_URI}/persona/${id}`, updatedGame);
+  updatePersona(id: number, updatedPerson: Persona): Observable<Persona> {
+    return this.http.put(`${this.API_URI}/persona/${id}`, updatedPerson);
   }
 
 }

@@ -1,8 +1,8 @@
-CREATE DATABASE ng_persona_db;
+CREATE DATABASE personas_db;
 
-USE ng_persona_db;
+USE personas_db;
 
-CREATE TABLE persona(
+CREATE TABLE personas(
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     fullname VARCHAR(180),
     birth TIMESTAMP,
@@ -10,4 +10,4 @@ CREATE TABLE persona(
     motherid INT(11)
     );
 
-DESCRIBE persona;
+DESCRIBE personas;

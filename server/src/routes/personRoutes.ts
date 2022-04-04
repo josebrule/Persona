@@ -11,7 +11,7 @@ class PersonRoutes{
 
     config(): void {
         this.router.get('/',personaController.index);
-        this.router.get('/',personaController.getOne);
+        this.router.get('/:id',personaController.getOne);
         this.router.post('/',personaController.create);
         this.router.delete('/:id',personaController.delete);
         this.router.put('/:id',personaController.update);

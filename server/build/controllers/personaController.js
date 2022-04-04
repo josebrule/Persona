@@ -16,19 +16,20 @@ const database_1 = __importDefault(require("../database"));
 class PersonaController {
     index(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const personas = yield database_1.default.query('SELECT * FROM personas');
+            const [personas, personasC] = yield database_1.default.query('SELECT * FROM personas;');
+            console.log(personas);
             res.json(personas);
         });
     }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const personas = yield database_1.default.query('SELECT * FROM personas WHERE id = ?', [id]);
-            console.log(personas.RowDataPacket.length);
-            if (personas.RowDataPacket.length > 0) {
-                return res.json(personas.RowDataPacket);
+            const [persona, personasC] = yield database_1.default.query('SELECT * FROM personas WHERE id = ?', [id]);
+            if (persona) {
+                console.log(persona);
+                return res.json(persona);
             }
-            res.status(404).json({ text: "The game doesn't exits" });
+            res.status(404).json({ text: "The person doesn't exits" });
         });
     }
     create(req, res) {
@@ -39,12 +40,17 @@ class PersonaController {
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            res.json({ text: 'elimianndopersona' });
+            const { id } = req.params;
+            yield database_1.default.query('DELETE FROM personas WHERE id = ?', [id]);
+            res.json({ message: "The person was deleted" });
         });
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            res.json({ text: 'adopersona' });
+            const { id } = req.params;
+            const oldPerson = req.body;
+            yield database_1.default.query('UPDATE personas set ? WHERE id = ?', [req.body, id]);
+            res.json({ message: "The person was Updated" });
         });
     }
 }

@@ -1,1 +1,32 @@
-<p>persona-list works!</p>
+<div class="card table-responsive">
+  <table id="userList" class="table table-bordered table-hover table-striped">
+    
+
+    <div >
+    <tbody *ngFor="let persona of personas">
+      <thead class="thead-light" *ngIf="persona.id==2">
+        <td >Table of persons with ID, Full Name, Birth day. (description)</td>
+    </thead>
+    <tr *ngIf="persona.id==2">
+      <td >ID</td>
+      <td >Full Name</td>
+      <td >Birth day</td>
+      <td>fatherid</td>
+      <td>motherid</td>
+    </tr>
+        <tr >
+          <td >{{persona.id}}</td>
+          <td >{{persona.fullname}}</td>
+          <td>{{persona.birth | date: 'yyyy-MM-dd'}}</td>
+          <td>{{persona.fatherid}}</td>
+          <td>{{persona.motherid}}</td>
+          <td>
+            <a [routerLink]="['/persona/edit', persona.id]"><i class="fas fa-edit"></i></a> | <button (click)="deletePerson(persona.id)"><i class="fas fa-user-times"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </div>
+  </table>
+
+</div>
+
