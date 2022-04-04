@@ -4,10 +4,10 @@
 
     <div >
     <tbody *ngFor="let persona of personas">
-      <thead class="thead-light" *ngIf="persona.id==2">
+      <thead class="thead-light" *ngIf="persona.id==personas['0'].id">
         <td >Table of persons with ID, Full Name, Birth day. (description)</td>
     </thead>
-    <tr *ngIf="persona.id==2">
+    <tr *ngIf="persona.id==personas['0'].id">
       <td >ID</td>
       <td >Full Name</td>
       <td >Birth day</td>

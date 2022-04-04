@@ -1,22 +1,25 @@
 <div class="col-md-4 offset-md-2">
     <div class="card">
       <div class="card-body">
-        <form action="">
+        <form action="/action_page.php" novalidate>
           <div class="form-group">
             <input type="text" name="fullname" [(ngModel)]="persona.fullname" placeholder="fullname" class="form-control" autofocus>
           </div>
           <div class="form-group">
-            <input type="date" name="Birth" [(ngModel)]="persona.birth" placeholder="Birth" class="form-control">
+            <input type="date" name="Birth" [(ngModel)]="persona.birth" placeholder="Birth" class="form-control" required />
           </div>
           <div class="form-group">
-            <input name="Fatherid" [(ngModel)]="persona.fatherid" rows="2" placeholder="Fatherid" class="form-control">
+            <input name="Fatherid" [(ngModel)]="persona.fatherid" rows="2" placeholder="Fatherid" class="form-control" required />
           </div>
           <div class="form-group">
-            <input name="Motherid" [(ngModel)]="persona.motherid" rows="2" placeholder="Motherid" class="form-control">
+            <input name="Motherid" [(ngModel)]="persona.motherid" rows="2" placeholder="Motherid" class="form-control" required />
           </div>
-          <button class="btn btn-success btn-block" (click)="edit ? updatePersona() : saveNewPersona()">
-            Save
-          </button>
+          <input type="submit" class="btn btn-success btn-block" (click)="onSumbit(edit)" required>
+          <div *ngIf="showAlert" class="col-md-30 mb-2">
+            <div class="alert alert-danger">
+              Falta Información en el formulario
+            </div>
+        </div>
         </form>
       </div>
     </div>

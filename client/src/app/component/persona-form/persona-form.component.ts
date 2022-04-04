@@ -17,13 +17,13 @@ export class PersonaFormComponent implements OnInit {
   persona: Persona = {
     id: 0,
     fullname: '',
-    birth: new Date(),
+    birth: '',
     fatherid: '',
     motherid: ''
   };
   personas: any = [];
   edit: boolean = false;
-
+  showAlert: boolean=false;
   constructor(private personaService: PersonService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -46,7 +46,19 @@ export class PersonaFormComponent implements OnInit {
         )
     }
   }
-
+  onSumbit(edit: boolean){
+    console.log(this.persona.birth?.length)
+    console.log(this.persona.fatherid)
+    if(this.persona.fullname!=''&&this.persona.birth!=''&&this.persona.fatherid!=''&&this.persona.motherid!=''&&this.persona.birth?.length!=24){
+    if(edit){
+      this.updatePersona()
+    }
+    else{
+      this.saveNewPersona()
+    }}else{
+      this.showAlert=true;
+    }
+  }
   saveNewPersona() {
     delete this.persona.id;
     this.personaService.savePersona(this.persona)
