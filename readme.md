@@ -2,7 +2,7 @@
 # Personas Restfull API CRUD 
 Se mostrara la aplicación su manejo y puesta en marcha.
 
-###Puesta en marcha localhost
+### Puesta en marcha localhost
 Para poner en funcionamiento la API se debe ejecutar la base de datos, el proyecto se probo con un contenesor de mysql 8.0 en docker-compose, el archivo .yml de su configuración esta en el proyecto por lo que empezaremos ejecutando este con docker. Para ello vamos al proyecto en la subcarpeta docker por medio del terminal y ejecutamos el siguiente comando como se muestra.
 
 `\Reto\docker> docker-compose up`
@@ -46,7 +46,7 @@ eso pone en marcha el servidor, luego se pone en marcha el lado del cliente, ing
 
 
 
-###Manejo del aplicativo
+### Manejo del aplicativo
 
 Para ingresar en el aplicativo se debe abrir el siguiente url.
 
