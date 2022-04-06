@@ -24,7 +24,9 @@ export class PersonaFormComponent implements OnInit {
   personas: any = [];
   edit: boolean = false;
   showAlert: boolean=false;
+  IntAlert: boolean=false;
   constructor(private personaService: PersonService, private router: Router, private activatedRoute: ActivatedRoute) { }
+
 
   ngOnInit() {
     const params = this.activatedRoute.snapshot.params;
@@ -50,15 +52,32 @@ export class PersonaFormComponent implements OnInit {
     console.log(this.persona.birth?.length)
     console.log(this.persona.fatherid)
     if(this.persona.fullname!=''&&this.persona.birth!=''&&this.persona.fatherid!=''&&this.persona.motherid!=''&&this.persona.birth?.length!=24){
-    if(edit){
-      this.updatePersona()
-    }
-    else{
-      this.saveNewPersona()
-    }}else{
+      if(this.isFloat(parseFloat(this.persona.fatherid!))||this.isFloat(parseFloat(this.persona.motherid!))){
+        this.IntAlert=true;
+        console.log("no es")
+      }else{
+        if (Number.isInteger(this.persona.fatherid)||Number.isInteger(this.persona.motherid)){
+          this.IntAlert=false;
+          this.showAlert=false;
+          if(edit){
+            this.updatePersona()
+          }
+          else{
+            this.saveNewPersona()
+          }
+        }else{
+          this.IntAlert=true;
+        }
+      }
+      }else{
       this.showAlert=true;
     }
   }
+
+  isFloat(n: number){
+    return Number(n) === n && n % 1 !== 0;
+  }
+
   saveNewPersona() {
     delete this.persona.id;
     this.personaService.savePersona(this.persona)

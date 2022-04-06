@@ -9,17 +9,22 @@
             <input type="date" name="Birth" [(ngModel)]="persona.birth" placeholder="Birth" class="form-control" required />
           </div>
           <div class="form-group">
-            <input name="Fatherid" [(ngModel)]="persona.fatherid" rows="2" placeholder="Fatherid" class="form-control" required />
+            <input type="number" step=1 name="Fatherid" [(ngModel)]="persona.fatherid" rows="2" placeholder="Fatherid" class="form-control" required />
           </div>
           <div class="form-group">
-            <input name="Motherid" [(ngModel)]="persona.motherid" rows="2" placeholder="Motherid" class="form-control" required />
+            <input type="number" step=1  name="Motherid" [(ngModel)]="persona.motherid" rows="2" placeholder="Motherid" class="form-control" required />
           </div>
           <input type="submit" class="btn btn-success btn-block" (click)="onSumbit(edit)" required>
           <div *ngIf="showAlert" class="col-md-30 mb-2">
             <div class="alert alert-danger">
               Falta Información en el formulario
             </div>
-        </div>
+          </div>
+          <div *ngIf="IntAlert" class="col-md-30 mb-2">
+            <div class="alert alert-danger">
+              Solo se pueden incluir números enteros
+            </div>
+          </div>
         </form>
       </div>
     </div>
